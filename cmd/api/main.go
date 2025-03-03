@@ -8,6 +8,7 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/hobbiton-wallet-backend/internal/handlers"
 	"github.com/hobbiton-wallet-backend/internal/middleware"
+	"github.com/hobbiton-wallet-backend/internal/models"
 	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -23,6 +24,11 @@ func main() {
 	db, err := gorm.Open(postgres.Open(os.Getenv("DATABASE_URL")), &gorm.Config{})
 	if err != nil {
 		log.Fatal("Failed to connect to database")
+	}
+	err = db.AutoMigrate(&models.User{})        // Add other models here
+	err = db.AutoMigrate(&models.Transaction{}) // Add other models here
+	if err != nil {
+		log.Fatal("Failed to migrate database:", err)
 	}
 
 	// Initialize handlers
