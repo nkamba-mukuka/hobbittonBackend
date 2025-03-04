@@ -55,8 +55,7 @@ This is the backend service for the Hobbiton Digital Wallet application. It prov
    createdb hobbiton_wallet
 
    # Run migrations (requires golang-migrate)
-   migrate -database "${DATABASE_URL}" -path internal/database/migrations up
-   ```
+  auto-migrate
 
 5. Run the server:
    ```bash
