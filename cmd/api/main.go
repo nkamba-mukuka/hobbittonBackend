@@ -49,6 +49,7 @@ func main() {
 	api.Use(authMiddleware.Authenticate)
 	api.HandleFunc("/transactions", transactionHandler.GetUserTransactions).Methods("GET")
 	api.HandleFunc("/transactions", transactionHandler.Create).Methods("POST")
+	api.HandleFunc("/transactions/send", transactionHandler.SendMoney).Methods("POST")
 
 	// CORS middleware
 	handler := corsMiddleware(r)

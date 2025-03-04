@@ -16,10 +16,10 @@ type Transaction struct {
 	UserID    uint            `json:"user_id"`
 	Type      TransactionType `json:"type"`
 	Amount    float64         `json:"amount"`
-	Date      time.Time      `json:"date"`
-	CreatedAt time.Time      `json:"created_at"`
-	UpdatedAt time.Time      `json:"updated_at"`
-	User      User           `json:"-" gorm:"foreignKey:UserID"`
+	Date      time.Time       `json:"date"`
+	CreatedAt time.Time       `json:"created_at"`
+	UpdatedAt time.Time       `json:"updated_at"`
+	User      User            `json:"-" gorm:"foreignKey:UserID"`
 }
 
 // CalculateBalance calculates the current balance for a set of transactions
